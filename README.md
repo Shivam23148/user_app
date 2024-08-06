@@ -76,6 +76,12 @@ When the app starts, it checks for internet connectivity:
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
+## APK Download
+
+You can download the APK file for the app from the following link:
+
+- [Download APK](UserApp.apk)
+
 
 ## Installation
 
