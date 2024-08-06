@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app/blocs/internetConnectivity_bloc/internet_connectivity_bloc.dart';
 import 'package:user_app/ui/InternetDisconnected/InternetDisconnected_Screen.dart';
-import 'package:user_app/ui/Splash/SplashScreen.dart';
 import 'package:user_app/ui/UserList/UserListScreen.dart';
 
 void main() {

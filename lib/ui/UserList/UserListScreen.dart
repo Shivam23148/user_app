@@ -23,6 +23,13 @@ class _UserListScreenState extends State<UserListScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    userListBloc.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

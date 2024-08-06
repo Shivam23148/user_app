@@ -50,7 +50,9 @@ dev_dependencies:
   retrofit_generator: ^8.1.2
   json_serializable: ^6.8.0
   flutter_launcher_icons: ^0.13.1
-flutter_icon:
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
   image_path: "assets/applogo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
