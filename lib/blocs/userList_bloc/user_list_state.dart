@@ -12,12 +12,6 @@ class UserListLoaded extends UserListState {
   UserListLoaded({required this.usersData});
 }
 
-class UserDetailsLoaded extends UserListState {
-  final User userData;
-
-  UserDetailsLoaded({required this.userData});
-}
-
 class UserListError extends UserListState {
   final String error;
 

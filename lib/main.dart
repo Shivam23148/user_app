@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_app/blocs/internetConnectivity_bloc/internet_connectivity_bloc.dart';
+import 'package:user_app/ui/InternetDisconnected/InternetDisconnected_Screen.dart';
+import 'package:user_app/ui/Splash/SplashScreen.dart';
 import 'package:user_app/ui/UserList/UserListScreen.dart';
 
 void main() {
@@ -10,8 +14,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: UserListScreen(),
+    return BlocProvider(
+      create: (context) => InternetConnectivityBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BlocBuilder<InternetConnectivityBloc, InternetConnectivityState>(
+          builder: (context, state) {
+            if (state is InternetDisconnected) {
+              return InternetdisconnectedScreen();
+            } else {
+              return UserListScreen();
+            }
+          },
+        ),
+      ),
     );
   }
 }

@@ -12,13 +12,4 @@ class UserRepository {
       rethrow;
     }
   }
-
-  Future<User> fetchUserDetail(int id) async {
-    try {
-      return await apiService.getUserDetail(id);
-    } catch (e) {
-      print("Error is User Repository: ${e}");
-      rethrow;
-    }
-  }
 }
