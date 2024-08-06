@@ -53,7 +53,7 @@ When the app starts, it checks for internet connectivity:
 
 ### Screenshot
 
-<img src="assets/Scrrenshots/user_list_screen.jpg" alt="Description of image" width="300" height="200">
+<img src="assets/Scrrenshots/user_list_screen.jpg" alt="Description of image" width="300" height="350">
 
 ### User Detail Screen
 
@@ -62,7 +62,7 @@ When the app starts, it checks for internet connectivity:
 
 ### Screenshot
 
-<img src="assets/Scrrenshots/user_detail_screen.jpg" alt="Description of image" width="300" height="200">
+<img src="assets/Scrrenshots/user_detail_screen.jpg" alt="Description of image" width="300" height="350">
 
 ### Offline Screen
 
@@ -70,7 +70,7 @@ When the app starts, it checks for internet connectivity:
 
 ### Screenshot
 
-<img src="assets/Scrrenshots/offline_screen.jpg" alt="Description of image" width="300" height="200">
+<img src="assets/Scrrenshots/offline_screen.jpg" alt="Description of image" width="300" height="350">
 
 ## Contributing
 
