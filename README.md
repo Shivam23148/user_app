@@ -51,14 +51,26 @@ When the app starts, it checks for internet connectivity:
 - **Search Bar**: Users can search for users by name. The search results update dynamically.
 - **User List**: Displays a list of users. Tapping on a user navigates to the `UserDetailScreen`.
 
+### Screenshot
+
+<img src="assets/Scrrenshots/user_list_screen.jpg" alt="Description of image" width="300" height="200">
+
 ### User Detail Screen
 
 - Displays detailed information about the selected user.
 - **Share Button**: Allows sharing of user details.
 
+### Screenshot
+
+<img src="assets/Scrrenshots/user_detail_screen.jpg" alt="Description of image" width="300" height="200">
+
 ### Offline Screen
 
 - Shows an image and message when the app detects no internet connection.
+
+### Screenshot
+
+<img src="assets/Scrrenshots/offline_screen.jpg" alt="Description of image" width="300" height="200">
 
 ## Contributing
 
