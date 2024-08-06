@@ -10,16 +10,21 @@ part 'user_list_state.dart';
 
 class UserListBloc extends Bloc<UserListEvent, UserListState> {
   UserRepository userRepository = UserRepository(ApiService(Dio()));
+  List<User> allUsers = [];
+  List<User> searchList = [];
+
   UserListBloc() : super(UserListInitial()) {
     on<UserFetchEvent>((event, emit) async {
       emit(UserListLoading());
       try {
-        final user = await userRepository.fetchUsers();
-        emit(UserListLoaded(usersData: user));
+        final users = await userRepository.fetchUsers();
+        allUsers = users; // Store all users
+        emit(UserListLoaded(usersData: users));
       } catch (e) {
         emit(UserListError(error: e.toString()));
       }
     });
+
     on<UserDetailFetchEvent>((event, emit) async {
       emit(UserListLoading());
       try {
@@ -28,6 +33,18 @@ class UserListBloc extends Bloc<UserListEvent, UserListState> {
         // emit(UserDetailsLoaded(userData: userData));
       } catch (e) {
         emit(UserListError(error: e.toString()));
+      }
+    });
+
+    on<UserSearchListEvent>((event, emit) async {
+      if (event.querry.isEmpty) {
+        emit(UserListLoaded(usersData: allUsers)); // Reset to all users
+      } else {
+        searchList = allUsers
+            .where((user) =>
+                user.name!.toLowerCase().contains(event.querry.toLowerCase()))
+            .toList();
+        emit(UserListLoaded(usersData: searchList));
       }
     });
   }

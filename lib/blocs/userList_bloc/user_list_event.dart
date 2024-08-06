@@ -10,3 +10,9 @@ class UserDetailFetchEvent extends UserListEvent {
     required this.id,
   });
 }
+
+class UserSearchListEvent extends UserListEvent {
+  final String querry;
+
+  UserSearchListEvent({required this.querry});
+}

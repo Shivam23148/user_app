@@ -1,10 +1,7 @@
-import 'package:dio/dio.dart';
+import 'package:animated_search_bar/animated_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app/blocs/userList_bloc/user_list_bloc.dart';
-import 'package:user_app/data/models/user_model.dart';
-import 'package:user_app/data/repository/user_repository.dart';
-import 'package:user_app/network/api_service.dart';
 import 'package:user_app/ui/UserDetail/UserDetailScreen.dart';
 
 class UserListScreen extends StatefulWidget {
@@ -43,28 +40,12 @@ class _UserListScreenState extends State<UserListScreen> {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is UserListLoaded) {
-                return ListView.builder(
-                    itemCount: state.usersData.length,
-                    itemBuilder: (context, index) {
-                      final userData = state.usersData[index];
-                      return ListTile(
-                        leading: CircleAvatar(
-                          child: Text(userData.name![0]),
-                        ),
-                        title: Text(userData.name ?? "No Name"),
-                        subtitle: Text(userData.username ?? "No Username"),
-                        onTap: () {
-                          /* userListBloc
-                              .add(UserDetailFetchEvent(id: userData.id ?? 0)); */
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UserDetailScreen(
-                                        user: userData,
-                                      )));
-                        },
-                      );
-                    });
+                return Column(
+                  children: [
+                    searchBar(),
+                    userListContainer(state),
+                  ],
+                );
               } else if (state is UserListError) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -81,5 +62,50 @@ class _UserListScreenState extends State<UserListScreen> {
             },
           ),
         ));
+  }
+
+  Expanded userListContainer(UserListLoaded state) {
+    return Expanded(
+      child: ListView.builder(
+          itemCount: state.usersData.length,
+          itemBuilder: (context, index) {
+            final userData = state.usersData[index];
+            return ListTile(
+              leading: CircleAvatar(
+                child: Text(userData.name![0]),
+              ),
+              title: Text(userData.name ?? "No Name"),
+              subtitle: Text(userData.username ?? "No Username"),
+              onTap: () {
+                /* userListBloc
+                                  .add(UserDetailFetchEvent(id: userData.id ?? 0)); */
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserDetailScreen(
+                              user: userData,
+                            )));
+              },
+            );
+          }),
+    );
+  }
+
+  AnimatedSearchBar searchBar() {
+    return AnimatedSearchBar(
+      label: "Search by name",
+      onChanged: (value) {
+        print(value);
+        userListBloc.add(UserSearchListEvent(querry: value));
+      },
+      searchDecoration: InputDecoration(
+        hintText: 'Search',
+        alignLabelWithHint: true,
+        fillColor: Colors.white,
+        focusColor: Colors.white,
+        hintStyle: TextStyle(color: Colors.white70),
+        border: InputBorder.none,
+      ),
+    );
   }
 }
